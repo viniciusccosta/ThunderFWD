@@ -19,5 +19,13 @@
         "64": "images/internet.png",
         "32": "images/internet-32px.png",
         "16": "images/internet-16px.png"
-    }
+    },
+    "message_display_action": {
+        "default_popup": "messagePopup/popup.html",
+        "default_title": "Details",
+        "default_icon": "images/internet-32px.png"
+    },
+    "permissions": [
+        "messagesRead"
+    ]
 }
