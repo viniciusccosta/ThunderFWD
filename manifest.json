@@ -1,0 +1,23 @@
+{
+    "manifest_version": 2,
+    "name": "Multiple Forwarding",
+    "description": "Forward multiple emails at once",
+    "version": "1.0",
+    "author": "Vinícius Costa",
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "{e5624468-77f1-4fdd-8c4c-0a061b54794f}",
+            "strict_min_version": "102.0.0"
+        }
+    },
+    "browser_action": {
+        "default_popup": "mainPopup/popup.html",
+        "default_title": "Multiple Forwarding",
+        "default_icon": "images/internet-32px.png"
+    },
+    "icons": {
+        "64": "images/internet.png",
+        "32": "images/internet-32px.png",
+        "16": "images/internet-16px.png"
+    }
+}
