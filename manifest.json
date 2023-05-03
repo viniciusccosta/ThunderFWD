@@ -11,9 +11,8 @@
         }
     },
     "icons": {
-        "64": "images/internet.png",
-        "32": "images/internet-32px.png",
-        "16": "images/internet-16px.png"
+        "64": "images/circle-icons-mail-64px.png",
+        "32": "images/circle-icons-mail-32px.png"
     },
     "permissions": [
         "messagesRead",
@@ -24,13 +23,18 @@
         "accountsRead",
         
         "activeTab",
-        "tabs"
+        "tabs",
+        "tabHide",
+
+        "storage"
     ],
-    "background": {
-        "scripts": ["multipleforward.js"]
-    },
     "browser_action": {
-        "default_title": "Multiple Forwarding",
-        "default_icon": "images/internet-32px.png"
+        "default_title": "MF",
+        "default_icon": "images/circle-icons-mail-32px.png",
+        "default_popup": "popup/popup.html"
+    },
+    "background": {
+        "page": "background.html"
     }
+
 }

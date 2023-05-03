@@ -1,0 +1,123 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 350px;
+}
+
+.input-container {
+    margin-right: 2%;
+    margin-left: 2%;
+    display: flex;
+    flex-direction: column;
+}
+
+.alert {
+    margin-top: 0.25rem;
+    padding: .375rem .75rem;
+    font-size: 0.9rem;
+    background-color: #6e363b;
+    color: #ea868f;
+    border: 2px solid #ea868f;
+    border-radius: .25rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form-control {
+    padding: .375rem .75rem;
+    font-size: 0.9rem;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+}
+
+.lista-container {
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    margin: 2%;
+    min-height: 160px;
+    height: 160px;
+    overflow-y: scroll;
+    overflow-x: visible;
+}
+
+table {
+    width: 100%;
+}
+
+tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+td:last-child {
+    width: 1px;
+}
+
+td > button {
+    cursor: pointer;
+    background-color: #f2f2f2a2;
+    border-radius: .25rem;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.btn {
+    padding: .375rem .75rem;
+    border: 1px solid black;
+    border-radius: .25rem;
+    font-weight: 400;
+    font-size: 0.9rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.btn:disabled {
+    background-color: gray;
+    border-color: gray;
+}
+
+.btn-primary {
+    color: white;
+    border-color: #007bff;
+    background-color: #007bff;
+}
+
+.btn-danger {
+    color: white;
+    border-color: #dc3545;
+    background-color: #dc3545;
+}
+
+.btn:hover:not(:disabled) {
+    cursor: pointer;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background-color: #0063cc;
+}
+
+.btn-danger:hover:not(:disabled) {
+    background-color: #b92433;
+}
+
+.progressbar-container {
+    margin: 1rem;
+}
+
+#progress {
+    width: 100%;
+    background-color: grey;
+    border-radius: .25rem;
+}
+  
+#bar {
+    width: 0%;
+    height: 30px;
+    background-color: green;
+    border-radius: .25rem;
+}
