@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "Multiple Forwarding",
     "description": "Forward multiple emails at once",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "author": "Vinícius Costa",
     "browser_specific_settings": {
         "gecko": {
