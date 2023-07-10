@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
-    "name": "Multiple Forwarding",
-    "description": "Forward multiple emails at once",
+    "name": "ThunderFWD",
+    "description": "Encaminhe múltiplos e-mails de uma só vez.",
     "version": "0.1.0",
     "author": "Vinícius Costa",
     "browser_specific_settings": {
@@ -29,7 +29,7 @@
         "storage"
     ],
     "browser_action": {
-        "default_title": "MF",
+        "default_title": "TFWD",
         "default_icon": "images/circle-icons-mail-32px.png",
         "default_popup": "popup/popup.html"
     },
