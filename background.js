@@ -5,36 +5,32 @@ var ls_emails_sent   = 0;
 var ls_destinatarios = [];
 
 // ---------------------------------------------------------------------
-async function save_state() {
+async function read_local_storage() {
+    let ls = await messenger.storage.local.get({
+        running      : false,
+        total_emails : 0,
+        emails_sent  : 0,
+        destinatarios: [],
+    });
+
+    ls_running       = ls.running;
+    ls_total_emails  = ls.total_emails;
+    ls_destinatarios = ls.destinatarios;
+    ls_emails_sent   = ls.emails_sent;
+}
+
+async function update_local_storage() {
     /* Função responsável por salvar o valor atual das variáveis globais no localStorage. */
 
     await messenger.storage.local.set({
-        running: ls_running,
-        total_emails: ls_total_emails,
-        emails_sent: ls_emails_sent,
+        running      : ls_running,
+        total_emails : ls_total_emails,
+        emails_sent  : ls_emails_sent,
         destinatarios: ls_destinatarios,
     });
 }
 
-async function update_state(running, total_emails, emails_sent, destinatarios) {
-    /* Função responsável por atualizar as variáveis globais, conforme parâmetros, e solicitar a atualização no localStorage. */
-
-    if (running) {
-        ls_running = running;
-    }
-    if (total_emails) {
-        ls_total_emails = total_emails;
-    }
-    if (emails_sent) {
-        ls_emails_sent = emails_sent;
-    }
-    if (destinatarios) {
-        ls_destinatarios = destinatarios;
-    }
-
-    await save_state();
-}
-
+// ---------------------------------------------------------------------
 async function send_message_frontend(value) {
     /* Função responsável por enviar uma mensagem para o FrontEnd */
     try {
@@ -94,12 +90,8 @@ async function forwardEmail(message, email_index) {
             }); // Efetivamente envia o e-mail
 
             // Atualiza variáveis globais e localStorage:
-            await update_state(
-                ls_running,
-                ls_total_emails,
-                ls_emails_sent + 1,
-                ls_destinatarios
-            );
+            ls_emails_sent += 1;
+            await update_local_storage();
             console.log(
                 `E-mail ${email_index} enviado com sucesso (${ls_emails_sent}/${ls_total_emails});`
             );
@@ -120,21 +112,22 @@ async function forwardEmail(message, email_index) {
     return promise;
 }
 
-async function forwardSelectedEmails(destinatarios) {
+async function forwardSelectedEmails() {
     /* Função responsável por coordenar o encaminhamento dos e-mails selecionados. */
 
     // Recupera os e-mails selecionados:
     let selected_messages = await getSelectedEmails();
-    // console.log("E-mails selecionados", selected_messages);
 
     // Atualiza variáveis globais e localStorage:
-    await update_state(true, selected_messages.length, 0, destinatarios);
+    ls_running      = true;
+    ls_emails_sent  = 0;
+    ls_total_emails = selected_messages.length;
+    await update_local_storage();
 
     // Cria as promises de encaminhamento de e-mail:
     let promises = selected_messages.map((message, i) =>
         forwardEmail(message, i)
     );
-    // console.log("Promises criadas", promises);
 
     // Executa todas as promises:
     await Promise.all(promises)
@@ -144,23 +137,19 @@ async function forwardSelectedEmails(destinatarios) {
         .catch((error) => {
             console.log(`Erro ao enviar e-mail: |${error}|.`);
         });
-    // console.log("Promises executadas");
+
 
     // Atualiza variáveis globais e localStorage:
-    await update_state(
-        false,
-        ls_total_emails,
-        ls_emails_sent,
-        ls_destinatarios
-    );
+    ls_running = false;
+    await update_local_storage();
     await send_message_frontend("done");
-    // console.log("Fim do forwardSelectedEmails");
 }
 
 // ---------------------------------------------------------------------
 messenger.runtime.onMessage.addListener(async (message) => {
     if (message.action === "start") {
-        await forwardSelectedEmails(message.destinatarios);
+        await read_local_storage();
+        await forwardSelectedEmails();
     }
 });
 

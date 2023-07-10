@@ -1,38 +1,49 @@
 // --------------------------------------------------------------------------------------------------------
-let running       = false;
-let destinatarios = [];
-let total_emails  = 0;
-let emails_sent   = 0;
+let ls_running       = false;
+let ls_total_emails  = 0;
+let ls_emails_sent   = 0;
+let ls_destinatarios = [];
 
 // --------------------------------------------------------------------------------------------------------
 const email_regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 // --------------------------------------------------------------------------------------------------------
-async function update_variables() {
+async function read_local_storage() {
     let ls = await messenger.storage.local.get({
-        running: false,
+        running      : false,
+        total_emails : 0,
+        emails_sent  : 0,
         destinatarios: [],
-        total_emails: [],
-        emails_sent: 0,
     });
 
-    running       = ls.running;
-    total_emails  = ls.total_emails;
-    destinatarios = ls.destinatarios;
-    emails_sent   = ls.emails_sent;
+    ls_running       = ls.running;
+    ls_total_emails  = ls.total_emails;
+    ls_emails_sent   = ls.emails_sent;
+    ls_destinatarios = ls.destinatarios;
+}
+
+async function update_local_storage() {
+    /* Função responsável por salvar o valor atual das variáveis globais no localStorage. */
+
+    await messenger.storage.local.set({
+        running      : ls_running,
+        total_emails : ls_total_emails,
+        emails_sent  : ls_emails_sent,
+        destinatarios: ls_destinatarios,
+    });
 }
 
 async function init_popup() {
-    await update_variables();
+    await read_local_storage();
 
-    if (running) {
+    if (ls_running) {
         freeze();
     }
 
     update_progress();
     update_table();
 
-    if (destinatarios.length > 0) {
+    if (ls_destinatarios.length > 0) {
         document.getElementById("btn_start").disabled = false;
     }
 }
@@ -71,25 +82,26 @@ function addDestinatario(d) {
     tbody.appendChild(tr);
 
     btn.addEventListener("click", () => delDestinatario(uuid));
+
+
 }
 
 async function delDestinatario(uuid) {
     // https://stackoverflow.com/a/66908123
 
-    let table = document.getElementById("lista");
-    let elements = Array.from(table.querySelectorAll("tr"));
+    let table             = document.getElementById("lista");
+    let elements          = Array.from(table.querySelectorAll("tr"));
     let element_to_delete = elements.find((el) => el.dataset.id === uuid);
-    let destinatario =
-        element_to_delete.querySelector("td:first-child").innerText;
+    let destinatario      = element_to_delete.querySelector("td:first-child").innerText;
 
-    let ls = await messenger.storage.local.get({ destinatarios: [] });
-    destinatarios = ls.destinatarios;
-    destinatarios = destinatarios.filter((item) => item != destinatario);
-    await messenger.storage.local.set({ destinatarios: destinatarios });
+    let storage      = await messenger.storage.local.get({ destinatarios: [] });
+    ls_destinatarios = storage.destinatarios;
+    ls_destinatarios = ls_destinatarios.filter((item) => item != destinatario);
+    await update_local_storage();
 
     table.removeChild(element_to_delete);
 
-    if (destinatarios.length == 0) {
+    if (ls_destinatarios.length == 0) {
         document.getElementById("btn_start").disabled = true;
     }
 }
@@ -113,28 +125,16 @@ function validateDestinatario(destinatario) {
     return true;
 }
 
-function getDestinatarios() {
-    let tbody = document.getElementById("lista");
-    let tds = tbody.querySelectorAll("tr > td:first-child");
-
-    let destinatarios = [];
-    for (let i = 0; i < tds.length; i++) {
-        destinatarios.push(tds[i].innerText);
-    }
-
-    return destinatarios;
-}
-
 function update_progress() {
     let bar = document.getElementById("bar");
     let txt = document.getElementById("progress_text");
 
-    if (total_emails > 0) {
-        let width = parseInt((emails_sent / total_emails) * 100);
+    if (ls_total_emails > 0) {
+        let width = parseInt((ls_emails_sent / ls_total_emails) * 100);
 
         if (width <= 100) {
             bar.style.width = width + "%";
-            progress_text.innerHTML = `Enviado ${emails_sent} de ${total_emails}`;
+            progress_text.innerHTML = `Enviado ${ls_emails_sent} de ${ls_total_emails}`;
         }
     } else {
         bar.style.width = "0%";
@@ -142,8 +142,8 @@ function update_progress() {
 }
 
 function update_table() {
-    for (let i = 0; i < destinatarios.length; i++) {
-        let destinatario = destinatarios[i];
+    for (let i = 0; i < ls_destinatarios.length; i++) {
+        let destinatario = ls_destinatarios[i];
         addDestinatario(destinatario);
     }
 }
@@ -181,12 +181,9 @@ function unfreeze() {
 // --------------------------------------------------------------------------------------------------------
 document.getElementById("btn_start").addEventListener("click", (event) => {
     freeze();
-
-    dests = getDestinatarios();
-
     document.getElementById("progress_text").innerHTML = `Enviando...`;
 
-    messenger.runtime.sendMessage({ action: "start", destinatarios: dests });
+    messenger.runtime.sendMessage({ action: "start" });
 });
 
 document.getElementById("input").addEventListener("keydown", async (event) => {
@@ -201,15 +198,15 @@ document.getElementById("input").addEventListener("keydown", async (event) => {
                 return;
             }
 
-            let ls = await messenger.storage.local.get({ destinatarios: [] });
-            destinatarios = ls.destinatarios;
-            destinatarios.push(destinatario);
-            await messenger.storage.local.set({ destinatarios: destinatarios });
+            let storage      = await messenger.storage.local.get({ destinatarios: [] });
+            ls_destinatarios = storage.destinatarios;
+            ls_destinatarios.push(destinatario);
+            await update_local_storage();
 
             addDestinatario(destinatario);
             event.target.value = "";
 
-            if (destinatarios.length > 0) {
+            if (ls_destinatarios.length > 0) {
                 document.getElementById("btn_start").disabled = false;
             }
         }
@@ -223,7 +220,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 messenger.runtime.onMessage.addListener(async (message) => {
-    await update_variables();
+    await read_local_storage();
 
     if (message.status === "done") {
         update_progress();
