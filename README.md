@@ -31,6 +31,12 @@ Após instalar a extensão **ThunderFWD**, um novo botão com o nome "TFWD" irá
 2. Durante o processo de encaminhamento, várias janelas de "Composição de E-mail" serão abertas e minimizadas em seguida. Infelizmente, não é possível encaminhar os e-mails de forma oculta sem abrir uma janela para cada e-mail.
 3. A barra de progresso, localizada abaixo do botão "Iniciar Encaminhamento", irá exibir as informações sobre o último encaminhamento em massa.
 
+## Screenshots
+![Tela Inicial](images/screenshot-empty.png)
+![Tela Inicial](images/screenshot-destinatarios.png)
+![Tela Inicial](images/screenshot-selecionado.png)
+![Tela Inicial](images/screenshot-enviado.png)
+
 ## Contribuições
 Contribuições são bem-vindas! Se você deseja contribuir para o projeto, siga as etapas abaixo:
 - Faça um fork do repositório.
