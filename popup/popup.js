@@ -150,7 +150,7 @@ function update_progress() {
 
         if (width <= 100) {
             progress_bar.style.width = width + "%";
-            progress_text.innerHTML = `Enviado ${ls_emails_sent} de ${ls_total_emails}`;
+            progress_text.textContent = `Enviado ${ls_emails_sent} de ${ls_total_emails}`;
         }
     } else {
         progress_bar.style.width = "0%";
@@ -187,7 +187,7 @@ function unfreeze() {
 // --------------------------------------------------------------------------------------------------------
 btn_start.addEventListener("click", (event) => {
     freeze();
-    progress_text.innerHTML = `Enviando...`;
+    progress_text.textContent = `Enviando...`;
 
     messenger.runtime.sendMessage({ action: "start" });
 });
