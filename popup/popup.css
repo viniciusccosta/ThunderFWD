@@ -14,28 +14,28 @@
 
 .alert {
     margin-top: 0.25rem;
-    padding: .375rem .75rem;
+    padding: 0.375rem 0.75rem;
     font-size: 0.9rem;
     background-color: #6e363b;
     color: #ea868f;
     border: 2px solid #ea868f;
-    border-radius: .25rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 0.25rem;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .form-control {
-    padding: .375rem .75rem;
+    padding: 0.375rem 0.75rem;
     font-size: 0.9rem;
     color: #495057;
     background-color: #fff;
     background-clip: padding-box;
     border: 1px solid #ced4da;
-    border-radius: .25rem;
+    border-radius: 0.25rem;
 }
 
 .lista-container {
     border: 1px solid #ced4da;
-    border-radius: .25rem;
+    border-radius: 0.25rem;
     margin: 2%;
     min-height: 160px;
     height: 160px;
@@ -58,7 +58,7 @@ td:last-child {
 td > button {
     cursor: pointer;
     background-color: #f2f2f2a2;
-    border-radius: .25rem;
+    border-radius: 0.25rem;
 }
 
 .buttons-container {
@@ -68,12 +68,12 @@ td > button {
 }
 
 .btn {
-    padding: .375rem .75rem;
+    padding: 0.375rem 0.75rem;
     border: 1px solid black;
-    border-radius: .25rem;
+    border-radius: 0.25rem;
     font-weight: 400;
     font-size: 0.9rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .btn:disabled {
@@ -112,12 +112,12 @@ td > button {
 #progress {
     width: 100%;
     background-color: grey;
-    border-radius: .25rem;
+    border-radius: 0.25rem;
 }
-  
+
 #bar {
     width: 0%;
     height: 30px;
     background-color: green;
-    border-radius: .25rem;
+    border-radius: 0.25rem;
 }

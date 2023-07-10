@@ -1,43 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Multiple Forwarding</title>
-        <link rel="stylesheet" type="text/css" media="screen" href="popup.css">
-        <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' >
+
+        <link
+            rel="stylesheet"
+            type="text/css"
+            media="screen"
+            href="popup.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+        />
     </head>
 
     <body>
         <div class="container">
             <div class="input-container">
-                <input id="input" type="text" class="form-control" placeholder="Destinatários">
-                <div id="alert" class="alert alert-danger" hidden>E-mail inválido (ou duplicado)</div>
+                <input
+                    id="input"
+                    type="text"
+                    class="form-control"
+                    placeholder="Destinatários"
+                />
+                <div id="alert" class="alert alert-danger" hidden>
+                    E-mail inválido (ou duplicado)
+                </div>
             </div>
 
             <div class="lista-container">
                 <table>
-                    <tbody id="lista">
-                    </tbody>
+                    <tbody id="lista"></tbody>
                 </table>
             </div>
 
             <div class="buttons-container">
-                <button type="button" id="btn_start" class="btn btn-primary" disabled>Enviar</button>
-                <button type="button" id="btn_stop"  class="btn btn-danger" disabled>Parar</button>
+                <button
+                    type="button"
+                    id="btn_start"
+                    class="btn btn-primary"
+                    disabled
+                >
+                    Enviar
+                </button>
             </div>
-            
+
             <div class="progressbar-container">
                 <div id="progress">
-                    <div id="bar">
-                    </div>
+                    <div id="bar"></div>
                 </div>
                 <span id="progress_text"></span>
             </div>
         </div>
-        
-        <script src="popup.js"></script>
     </body>
+
+    <script src="popup.js"></script>
 </html>
