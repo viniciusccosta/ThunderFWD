@@ -1,6 +1,7 @@
 # ThunderFWD
 
 [![MIT License](https://img.shields.io/github/license/viniciusccosta/thunderFWD)](https://choosealicense.com/licenses/mit/)
+[![Thunderbird](https://img.shields.io/badge/thunderbird-102-blue)]([https://choosealicense.com/licenses/mit/](https://www.thunderbird.net/pt-BR/))
 
 O **ThunderFWD** é uma extensão para o Thunderbird que permite o encaminhamento de vários e-mails de uma só vez. A extensão é compatível com o Thunderbird versão 102.
 
