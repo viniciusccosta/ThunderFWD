@@ -3,26 +3,29 @@
 [![MIT License](https://img.shields.io/github/license/viniciusccosta/thunderFWD)](https://choosealicense.com/licenses/mit/)
 [![Thunderbird](https://img.shields.io/badge/thunderbird-102-blue)]([https://choosealicense.com/licenses/mit/](https://www.thunderbird.net/pt-BR/))
 
-O **ThunderFWD** é uma extensão para o Thunderbird que permite o encaminhamento de vários e-mails de uma só vez. A extensão é compatível com o Thunderbird versão 102.
+O **ThunderFWD** é uma extensão para o Thunderbird que permite o encaminhamento de vários e-mails de uma só vez.
+A extensão é compatível com o Thunderbird versão 102.  
 
-## Instalação
-Para instalar a extensão **ThunderFWD**, siga os passos abaixo:
+A extensão já foi submetida para para análise e em breve estará disponível para instalação diretamente no aplicativo.
 
-1. Faça o [download](https://github.com/viniciusccosta/ThunderFWD/releases/download/v0.1.0/thunderfwd-0.1.0.zip) do pacote da extensão no repositório do GitHub.
+## Instalação Manual
+Para instalar a extensão **ThunderFWD** manualmente, siga os passos abaixo:
+
+1. Faça o download da última versão da extensão na [galeria oficial de extensões](https://addons.thunderbird.net/en-US/thunderbird/addon/thunderfwd/) ou no [repositório do GitHub](https://github.com/viniciusccosta/ThunderFWD/releases/download/v0.1.0/thunderfwd-0.1.0.zip).
 2. Abra o Thunderbird e vá em Ferramentas > Extensões e Temas.
 3. Clique no ícone de engrenagem e selecione "Instalar de um arquivo"
 4. Escolha o arquivo da extensão baixado e clique em Abrir.
 5. O Thunderbird irá instalar a extensão. Em alguns casos, pode ser necessário reiniciar o aplicativo para que as alterações tenham efeito.
 
 ## Utilização
-Após instalar a extensão **ThunderFWD**, um novo botão com o nome "TFWD" irá aparecer na barra de ferramentas, no canto direito do Thunderbird.
+Após instalar a extensão **ThunderFWD**, um novo botão com o nome "TFWD" irá aparecer na barra de ferramentas, no canto direito do aplicativo.
 
 1. Selecione os e-mails que deseja encaminhar.
 2. Clique no botão "TFWD" para abrir um pequeno popup logo abaixo do botão.
 3. Adicione os endereços de e-mail dos destinatários no campo de entrada.
 4. Pressione a tecla Enter para adicionar cada destinatário à lista.
-5. Para remover um destinatário, clique no pequeno ícone/botão ao lado do endereço de e-mail dele.
-6. Quando tiver adicionado todos os destinatários desejados, clique no botão "Iniciar Encaminhamento".
+5. Para remover um destinatário, clique no pequeno ícone/botão ao lado direito do endereço de e-mail dele.
+6. Quando tiver adicionado todos os destinatários desejados, clique no botão "Encaminhar X email(s)".
 7. Para acompanhar o progresso do encaminhamento, clique novamente no botão "TFWD".
 
 ## Informações Adicionais:
@@ -39,15 +42,22 @@ Após instalar a extensão **ThunderFWD**, um novo botão com o nome "TFWD" irá
 
 ## Contribuições
 Contribuições são bem-vindas! Se você deseja contribuir para o projeto, siga as etapas abaixo:
+
 - Faça um fork do repositório.
-- Crie uma branch para a sua feature (git checkout -b minha-feature).
+- Crie uma branch para a sua feature
+  ``` bash
+  git checkout -b minha-feature
+  ```
 - Implemente suas alterações.
-- Faça o commit das suas alterações (git commit -am 'Adiciona minha feature').
-- Envie a sua branch para o repositório remoto (git push origin minha-feature).
+- Faça o commit das suas alterações
+  ```bash
+  git commit -am 'Adiciona minha feature'
+  ````
+- Envie a sua branch para o repositório remoto
+  ```bash
+  git push origin minha-feature
+  ```
 - Abra um pull request.
 
 ## Licença
 Este projeto está licenciado sob a Licença MIT. Para mais informações, consulte o arquivo LICENSE.
-
-## Observações
-Esta extensão ainda está em desenvolvimento e não foi publicada.
