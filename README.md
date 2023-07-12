@@ -18,7 +18,7 @@ Para instalar a extensão **ThunderFWD** siga os passos abaixo:
 ## Instalação Manual
 Para instalar a extensão **ThunderFWD** manualmente, siga os passos abaixo:
 
-1. Faça o download da última versão da extensão na [galeria oficial de extensões](https://addons.thunderbird.net/en-US/thunderbird/addon/thunderfwd/) ou no [repositório do GitHub](https://github.com/viniciusccosta/ThunderFWD/releases/download/v0.1.0/thunderfwd-0.1.0.zip).
+1. Faça o download da última versão da extensão na [galeria oficial de extensões](https://addons.thunderbird.net/en-US/thunderbird/addon/thunderfwd/) ou no [repositório do GitHub](https://github.com/viniciusccosta/ThunderFWD/releases/download/v0.1.1/thunderfwd-0.1.1.zip).
 2. Abra o Thunderbird e vá em Ferramentas > Extensões e Temas.
 3. Clique no ícone de engrenagem e selecione "Instalar de um arquivo"
 4. Escolha o arquivo da extensão baixado e clique em Abrir.
