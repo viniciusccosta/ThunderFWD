@@ -4,9 +4,16 @@
 [![Thunderbird](https://img.shields.io/badge/thunderbird-102-blue)]([https://choosealicense.com/licenses/mit/](https://www.thunderbird.net/pt-BR/))
 
 O **ThunderFWD** é uma extensão para o Thunderbird que permite o encaminhamento de vários e-mails de uma só vez.
-A extensão é compatível com o Thunderbird versão 102.  
+A extensão é compatível com o Thunderbird versão 102.
 
-A extensão já foi submetida para para análise e em breve estará disponível para instalação diretamente no aplicativo.
+## Instalação
+Para instalar a extensão **ThunderFWD** siga os passos abaixo:
+
+1. Abra o Thunderbird e vá em Ferramentas > Extensões e Temas.
+2. Pesquise por **ThunderFWD** e pressione Enter
+3. Uma nova aba irá de abrir com a galeria oficial do Thunderbird
+4. Clique em "Adicionar ao Thunderbird"   
+    ![Instalação](images/screenshot-instalação.png)
 
 ## Instalação Manual
 Para instalar a extensão **ThunderFWD** manualmente, siga os passos abaixo:
